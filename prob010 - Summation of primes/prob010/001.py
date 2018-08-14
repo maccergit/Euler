@@ -16,10 +16,7 @@ def nextPrime():
     primes = []
     while True:
         current += 1
-        for prime in primes:
-            if current % prime == 0:
-                break
-        else:
+        if all(current % prime > 0 for prime in primes):
             primes.append(current)
             yield current
 
