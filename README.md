@@ -11,4 +11,4 @@ NOTE : Several files require extra Python modules to be installed in order to ru
 - utils.timing : "timeit" is a standard Python library that is already installed with Python, but "matplotlib" is not and needs to be installed.
 - utils.prod : "operator" and "functools" are both standard Python libraries.  Python 3.8 introduced "math.prod()" which obsoletes rolling your own version of "prod()".
 - prob002/04 : "math" is a standard Python library.
-- prob002/05 : "sympy" is not standard, and needs to be installed.  Note that using it with PyDev requires Java 11 or later (I'm using Java 17) and a recent Eclipse.
+- prob002/05 : "sympy" is not standard and needs to be installed.  Note that using it with PyDev requires Java 11 or later (I'm using Java 17) and a recent Eclipse.
