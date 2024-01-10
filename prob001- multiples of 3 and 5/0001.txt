@@ -1,0 +1,18 @@
+Multiples of 3 and 5
+--------------------
+
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Find the sum of all the multiples of 3 or 5 below 1000.
+----------
+Brute force with trial division
+[1000, 0.13] ms
+[100000, 11.85] ms
+
+Brute force, but use skip amount to avoid trial division
+[1000, 0.032] ms
+[100000, 2.98] ms
+
+Use summation formula to avoid brute force
+[1000, 0.76] µsec
+[100000, 0.78] µsec
