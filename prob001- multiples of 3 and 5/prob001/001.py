@@ -27,12 +27,12 @@ O(n)
 import timeit
 
 def getSolution(limit):
-    return sum(x for x in xrange(limit) if x % 3 == 0 or x % 5 == 0)
+    return sum(x for x in range(limit) if x % 3 == 0 or x % 5 == 0)
 
 assert getSolution(10) == 23
 
 def timeProblem(probLimit, count = 10000):
-    print getSolution(probLimit)
+    print(getSolution(probLimit))
     print(str(timeit.timeit("getSolution(" + str(probLimit) + ")", setup = "from __main__ import getSolution", number = count) / count * 1000000) + " µsec")
 
 assert getSolution(1000) == 233168
