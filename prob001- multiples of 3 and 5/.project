@@ -3,6 +3,7 @@
 	<name>prob001- multiples of 3 and 5</name>
 	<comment></comment>
 	<projects>
+		<project>utils</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
