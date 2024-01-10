@@ -3,6 +3,7 @@
 	<name>prob003 - largest prime factor</name>
 	<comment></comment>
 	<projects>
+		<project>utils</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

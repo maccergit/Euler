@@ -1,0 +1,25 @@
+Largest prime factor
+--------------------
+
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?
+----------
+Brute force (with primes)
+[too long to run]
+
+Brute force - alternative factor without checking to see if prime
+[100, 1.48] µsec
+[4000000, 3.377] µsec
+
+SymPy - primes
+[100, 15.17] µsec
+[4000000, 17.34] µsec
+
+SymPy - factor
+[100, 11.44] µsec
+[4000000, 13.72] µsec
+
+pyprimesieve
+[100, 0.83] µsec
+[4000000, 0.90] µsec
