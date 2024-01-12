@@ -1,0 +1,23 @@
+Smallest multiple
+-----------------
+
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+----------
+
+Brute force
+[10, 14.17] µsec
+[20, 33.58] µsec
+
+SymPy
+[10, 23.5] µsec
+[20, 51.2] µsec
+
+numpy (Python3 only)
+[10, 11.29] µsec
+[20, 12.79] µsec
+
+pyprimesieve
+[10, 9.76] µsec
+[20, 19.72] µsec
