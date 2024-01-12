@@ -6,17 +6,17 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-Brute force
+Gauss's Formula - simplified to reduce operations
 '''
 
 def solution(limit):
-    return sum(x for x in range(limit + 1)) ** 2 - sum(x * x for x in range(limit + 1))
+    return limit * (limit + 1) * (3 * limit + 2) * (limit - 1) / 12
 
 assert solution(10) == 2640
 print(solution(100))
 
-count = 1000
-scale = 1000000 # µsec
+count = 1000000
+scale = 1000000000 # nsec
 
 import utils.timing
 utils.timing.table_timing([10, 100], count, scale)
