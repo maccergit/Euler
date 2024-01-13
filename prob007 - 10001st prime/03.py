@@ -7,17 +7,17 @@ Created on Feb 19, 2020
 @author: johnmcalister
 '''
 
-# SymPy
+# pyprimesieve
 
-from sympy import prime
+from pyprimesieve import primes_nth
 
 def solution(limit):
-    return prime(limit)
+    return primes_nth(limit)
 
 assert solution(6) == 13
 print(solution(10001))
 
-count = 100
+count = 10000
 scale = 1000000 # µsec
 
 import utils.timing
