@@ -5,11 +5,11 @@
 Created on Feb 19, 2020
 
 @author: johnmcalister
+
+Brute Force
 '''
 
-# Brute Force
-
-import util.prod
+import math
 
 data = (
     "73167176531330624919225119674426574742355349194934"
@@ -35,14 +35,14 @@ data = (
     )
 
 def solution(limit):
-    return max(util.prod.prod(int(y) for y in x) for x in [data[start:start + limit] for start in range(len(data) - limit + 1)])
+    return max(math.prod(int(y) for y in x) for x in [data[start:start + limit] for start in range(len(data) - limit + 1)])
 
 assert solution(4) == 5832
-print solution(13)
+print(solution(13))
 
 count = 100
 scale = 1000 # msec
 
-import util.timing
-util.timing.table_timing([4, 13], count, scale)
-util.timing.plot_timing([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], count, scale)
+import utils.timing
+utils.timing.table_timing([4, 13], count, scale)
+utils.timing.plot_timing([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], count, scale)
