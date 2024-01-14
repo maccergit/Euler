@@ -6,14 +6,14 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-Sieve - using dict
+Sieve - accumulating list of primes and stopping short
 '''
 
 def solution(limit):
     sieve = {x: True for x in range(2, limit)}
     current = 2
     primes = []
-    while (current < limit) :
+    while (current + current < limit + 1):
         if not sieve[current]:
             current += 1
         else:
@@ -21,6 +21,9 @@ def solution(limit):
                 sieve[index] = False
             primes.append(current)
             current += 1
+    for p in range(current, limit):
+        if sieve[p]:
+            primes.append(p)
     return sum(primes)
 
 assert solution(10) == 17
