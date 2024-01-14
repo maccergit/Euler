@@ -11,7 +11,7 @@ Created on Feb 19, 2020
 
 from sympy.solvers.diophantine import diophantine
 from sympy.abc import a, b, c
-import util.prod
+import math
 
 def solution(limit):
     solution = set()
@@ -32,14 +32,14 @@ def solution(limit):
             candidate = sorted(x.subs({eq[0] : result[0], t1 : result[1]}) for x in eq if result[0] > 0)
             if candidate and candidate[0] > 0:
                 solution.add(tuple(candidate))
-    return util.prod.prod(solution.pop())
+    return math.prod(solution.pop())
 
 assert solution(12) == 60
-print solution(1000)
+print(solution(1000))
 
 count = 10
 scale = 1000 # msec
 
-import util.timing
-util.timing.table_timing([12, 1000], count, scale)
-util.timing.plot_timing([12, 108, 200, 300, 400, 504, 600, 700, 800, 900, 1000], count, scale)
+import utils.timing
+utils.timing.table_timing([12, 1000], count, scale)
+utils.timing.plot_timing([12, 108, 200, 300, 400, 504, 600, 700, 800, 900, 1000], count, scale)

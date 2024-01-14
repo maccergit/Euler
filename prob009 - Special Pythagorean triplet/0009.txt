@@ -19,4 +19,8 @@ SymPy (diophantine)
 [12, 42.38] msec
 [1000, 88.06] msec
 
-code from problem discussion (builds on diophantine)
+TODO - Matrix multiplication - see wikipedia "Tree of primitive Pythagorean triples"
+
+TODO - Dickson's method, when s and t are coprime - see wikipedia "Formulas for generating Pythagorean triples", "Dickson's method"
+
+TODO - code from problem discussion (builds on diophantine)
