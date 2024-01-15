@@ -27,8 +27,8 @@ assert solution(10) == 2520
 print(solution(20))
 
 count = 10
-scale = 1000000 # µsec
+scale = 1000000
 
 import utils.timing
 utils.timing.table_timing([10, 20], count, scale)
-utils.timing.plot_timing([10, 12, 14, 16, 18, 20, 22, 24], count, scale)
+utils.timing.plot_timing([10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], count, scale, "prob0005.02")

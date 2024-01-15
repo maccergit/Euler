@@ -30,9 +30,9 @@ def solution(limit):
 assert solution(6) == 13
 print(solution(10001))
 
-count = 1
-scale = 1000000 # µsec
+count = 2
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([6, 10001], count, scale)
-utils.timing.plot_timing([1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000], count, scale)
+utils.timing.plot_timing([1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000], count, scale, "prob0007.01")

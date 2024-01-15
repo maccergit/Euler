@@ -26,4 +26,4 @@ scale = 1000 # msec
 
 import utils.timing
 utils.timing.table_timing([2, 3, 4], count, scale)
-# utils.timing.plot_timing([2, 3, 4], count, scale)
+utils.timing.plot_timing([2, 3, 4], count, scale, "prob0004.01")

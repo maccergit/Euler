@@ -41,8 +41,8 @@ assert solution(4) == 5832
 print(solution(13))
 
 count = 100
-scale = 1000 # msec
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([4, 13], count, scale)
-utils.timing.plot_timing([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], count, scale)
+utils.timing.plot_timing([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], count, scale, "prob0008.01")

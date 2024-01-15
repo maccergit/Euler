@@ -24,9 +24,9 @@ def solution(limit):
 assert solution(10) == 17
 print(solution(2000000))
 
-count = 1
-scale = 1 # sec
+count = 2
+scale = 1
 
 import utils.timing
 utils.timing.table_timing([10, 2000000], count, scale)
-utils.timing.plot_timing([500000, 1000000, 1500000, 2000000], count, scale)
+utils.timing.plot_timing([500000, 1000000, 1500000, 2000000], count, scale, "prob0010.03")

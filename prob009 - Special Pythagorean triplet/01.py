@@ -40,17 +40,20 @@ def gen_trip(limit):
             # we have trial values for "b" and "c", so we also have trial value for "a"
             yield [limit - b - c, b, c]
 
+# Returns 0 if no solution
 def solution(limit):
     # generate trial triplets, see if any are pythagorean, and return first one found
-    return math.prod([x for x in gen_trip(limit) if x[0] * x[0] + x[1] * x[1] == x[2] * x[2]][0])
+    trips = [x for x in gen_trip(limit) if x[0] * x[0] + x[1] * x[1] == x[2] * x[2]]
+    if trips:
+        return math.prod(trips[0])
+    return 0
 
 assert solution(12) == 60
 print(solution(1000))
 
 count = 100
-scale = 1000 # msec
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([12, 1000], count, scale)
-# TODO - the solution is not robust for all limit values, and fails on the list below.
-# utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale)
+utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale, "prob0009.01")

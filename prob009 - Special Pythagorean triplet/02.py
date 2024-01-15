@@ -25,8 +25,8 @@ assert solution(12) == 60
 print(solution(1000))
 
 count = 100
-scale = 1000 # msec
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([12, 1000], count, scale)
-utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale)
+utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale, "prob0009.02")
