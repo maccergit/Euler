@@ -20,9 +20,10 @@ def table_timing(parms, count, scale, title = ''):
     for data in ([parm, timing(parm, count, scale)] for parm in parms):
         print(data)
 
-def plot_timing(parms, count, scale, title = ''):
+def plot_timing(parms, count, scale, title = '', ticks = True):
     plt.plot(parms, [timing(parm, count, scale) for parm in parms])
-    plt.xticks(parms)
+    if (ticks):
+        plt.xticks(parms)
     plt.title(title)
     plt.xlabel("limit")
     ylabel = "time"
