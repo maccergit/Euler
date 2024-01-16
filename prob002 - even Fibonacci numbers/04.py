@@ -17,7 +17,7 @@ def solution(limit):
     phi = (1 + root5) / 2
     upsilon = 1 - phi
     i = int((math.log(limit) + math.log(5) / 2.0) / math.log(phi) / 3)
-    return sum(int((phi ** y - upsilon ** y) / root5) for y in (3 * (x + 1) for x in range(i)))
+    return int(sum((phi ** x - upsilon ** x) for x in range(3, 3 * i + 3, 3)) / root5)
 
 assert solution(100) == 44
 print(solution(4000000))
