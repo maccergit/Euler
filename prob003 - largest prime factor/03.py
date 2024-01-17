@@ -17,14 +17,14 @@ def gen_factors(limit):
     while current_prime * current_prime < limit:
         if limit % current_prime == 0:
             yield current_prime
-            limit = limit / current_prime
+            limit = limit // current_prime
         else:
             current += 1
             current_prime = sieve[current]
     yield limit
 
 def solution(limit):
-    return int(max(x for x in gen_factors(limit)))
+    return max(x for x in gen_factors(limit))
 
 assert solution(13195) == 29
 print(solution(600851475143))
