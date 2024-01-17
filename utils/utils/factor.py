@@ -13,5 +13,5 @@ def gen_factors(limit):
             current += 1
         else:
             yield current
-            limit = limit / current
+            limit = limit // current
     yield limit

@@ -18,7 +18,7 @@ assert solution(13195) == 29
 print(solution(600851475143))
 
 count = 10
-scale = 1000000
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([13195, 600851475143], count, scale)
