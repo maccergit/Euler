@@ -35,16 +35,16 @@ def solution(limit):
     primes = [x for x in gen_prime(limit)]
     current = get_factor(limit, primes)
     while current != limit:
-        limit = limit / current
+        limit = limit // current
         current = get_factor(limit, primes)
-    return int(limit)
+    return limit
 
 assert solution(13195) == 29
 # print(solution(600851475143))
 
-count = 100
-scale = 1000000
+count = 3
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([101, 4000001], count, scale)
-utils.timing.plot_timing([10000001, 20000003, 30000001, 40000001, 50000003, 60000001, 70000001, 80000003, 90000001, 100000001], count, scale, "prob0003.01")
+utils.timing.plot_timing([100000001, 200000003, 300000001, 400000001, 500000003, 600000001, 700000001, 800000003, 900000001, 1000000001], count, scale, "prob0003.01")
