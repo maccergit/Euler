@@ -32,3 +32,4 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 
 What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 ----------
+TODO : figure out how to vectorize horz, vert, diagonal results in 04 so that we are not stepping through the array one cell at a time.

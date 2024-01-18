@@ -6,16 +6,19 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-Brute force - python lists
+NumPy - simply replace lists with NumPy arrays, using NumpPy array indexing
 '''
 
 import math
+import numpy as np
 
 testData = [
 [1, 2, 3],
 [4, 9, 6],
 [7, 8, 5]
 ]
+
+testDataNP = np.array(testData)
 
 origData = [
 "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08",
@@ -41,32 +44,33 @@ origData = [
 ]
 
 data = [[int(y) for y in x.split()] for x in origData]
+dataNP = np.array(data)
 
 def getHorz(row_index, col_index, limit):
     # skip over elements too close to right side for horz
     if (col_index + limit) < (len(data[0]) + 1):
-        return(math.prod(data[row_index][col_index:col_index + limit]))
+        return(math.prod(data[row_index, col_index:col_index + limit]))
     else:
         return 0
 
 def getVert(row_index, col_index, limit):
     # skip over elements too close to bottom side for vert
     if (row_index + limit) < (len(data) + 1):
-        return(math.prod(data[x][col_index] for x in range(row_index, row_index + limit)))
+        return(math.prod(data[row_index:row_index + limit, col_index]))
     else:
         return 0
 
 def getDiagUp(row_index, col_index, limit):
     # skip over elements too close to right side or top side for diag up
     if ((col_index + limit) < (len(data[0]) + 1)) and ((row_index + 1) > (limit - 1)):
-        return(math.prod(data[row_index - offset][col_index + offset] for offset in range(limit)))
+        return(math.prod(data[row_index - offset, col_index + offset] for offset in range(limit)))
     else:
         return 0
 
 def getDiagDown(row_index, col_index, limit):
     # skip over elements too close to right side or bottom side for diag down
     if ((col_index + limit) < (len(data[0]) + 1)) and ((row_index + limit) < (len(data) + 1)):
-        return(math.prod(data[row_index + offset][col_index + offset] for offset in range(limit)))
+        return(math.prod(data[row_index + offset, col_index + offset] for offset in range(limit)))
     else:
         return 0
 
@@ -82,11 +86,12 @@ def getMax(row_index, col_index, limit):
 def solution(limit):
     return(max(getMax(row_index, col_index, limit) for row_index in range(len(data)) for col_index in range(len(data[0]))))
 
-# data = testData
+# data = testDataNP
 # assert solution(1) == 9
 # assert solution(2) == 72
 # assert solution(3) == 280
 
+data = dataNP
 print(solution(4))
 
 count = 100

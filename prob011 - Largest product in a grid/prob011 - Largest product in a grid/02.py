@@ -6,16 +6,19 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-Brute force - python lists
+NumPy - simply replace lists with NumPy arrays
 '''
 
 import math
+import numpy as np
 
 testData = [
 [1, 2, 3],
 [4, 9, 6],
 [7, 8, 5]
 ]
+
+testDataNP = np.array(testData)
 
 origData = [
 "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08",
@@ -41,6 +44,7 @@ origData = [
 ]
 
 data = [[int(y) for y in x.split()] for x in origData]
+dataNP = np.array(data)
 
 def getHorz(row_index, col_index, limit):
     # skip over elements too close to right side for horz
@@ -82,11 +86,12 @@ def getMax(row_index, col_index, limit):
 def solution(limit):
     return(max(getMax(row_index, col_index, limit) for row_index in range(len(data)) for col_index in range(len(data[0]))))
 
-# data = testData
+# data = testDataNP
 # assert solution(1) == 9
 # assert solution(2) == 72
 # assert solution(3) == 280
 
+data = dataNP
 print(solution(4))
 
 count = 100
