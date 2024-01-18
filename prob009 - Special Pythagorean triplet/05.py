@@ -19,11 +19,11 @@ Difference from previous is both must be odd, so outer loop also skips every oth
 '''
 
 def solution(limit):
-    for p in range(3, int(limit / 2) + 2, 2):
+    for p in range(3, limit // 2 + 2, 2):
         for q in range(1, p + 2, 2):
             a = p * q
-            b = int((p * p - q * q) / 2)
-            c = int((p * p + q * q) / 2)
+            b = (p * p - q * q) // 2
+            c = (p * p + q * q) // 2
             if (a + b + c) == limit:
                 return a * b * c
     return 0

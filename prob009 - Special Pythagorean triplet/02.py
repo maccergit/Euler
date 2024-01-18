@@ -13,9 +13,9 @@ of a and b, one must be odd and the other must be even
 '''
 
 def solution(limit):
-    for a in range(1, int(limit / 2) + 2):
+    for a in range(1, limit // 2 + 2):
         # a can be odd or even, but b cannot be the same, and must always be opposite even-ness of a.
-        for b in range(a + 1, int(limit / 2) + 2, 2):
+        for b in range(a + 1, limit // 2 + 2, 2):
             c = limit - a - b
             if a * a + b * b == c * c:
                 return a * b * c

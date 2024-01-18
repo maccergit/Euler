@@ -17,8 +17,8 @@ for p and q, natural numbers that cannot both be odd:
 '''
 
 def solution(limit):
-    for p in range(1, int(limit / 4) + 2):
-        for q in range(p % 2 + 1, int(limit / 4) + 2, 2):
+    for p in range(1, limit // 4 + 2):
+        for q in range(p % 2 + 1, limit // 4 + 2, 2):
             a = 2 * p * q
             b = p * p - q * q
             if b < 0:

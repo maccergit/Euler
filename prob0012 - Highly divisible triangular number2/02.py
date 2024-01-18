@@ -12,7 +12,7 @@ Created on Feb 19, 2020
 from sympy import divisor_count
 
 def triangle(n):
-    return int((n + 1) * n / 2)
+    return (n + 1) * n // 2
 
 assert triangle(1) == 1
 assert triangle(2) == 3

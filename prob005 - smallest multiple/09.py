@@ -14,8 +14,8 @@ import math
 def solution(limit):
     result = 1
     for x in range(2, limit + 1):
-        result = x * result / math.gcd(x, int(result))
-    return int(result)
+        result = x * result // math.gcd(x, result)
+    return result
 
 assert solution(10) == 2520
 print(solution(20))

@@ -13,7 +13,7 @@ from pyprimesieve import factorize
 import math
 
 def triangle(n):
-    return int((n + 1) * n / 2)
+    return (n + 1) * n // 2
 
 assert triangle(1) == 1
 assert triangle(2) == 3

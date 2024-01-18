@@ -12,7 +12,7 @@ Created on Feb 19, 2020
 import utils.factor
 
 def solution(limit):
-    return int(max(x for x in utils.factor.gen_factors(limit)))
+    return max(x for x in utils.factor.gen_factors(limit))
 
 assert solution(13195) == 29
 print(solution(600851475143))

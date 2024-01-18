@@ -34,9 +34,9 @@ import math
 
 def gen_trip(limit):
     # "c" can range from [c / 3 .. limit], integers only
-    for c in range(int(limit / 3 + 1), limit + 1):
+    for c in range(limit // 3 + 1, limit + 1):
         # "b" can range from [a + 1 .. a + b]
-        for b in range(int((limit - c) / 2) + 1, limit - c - 1):
+        for b in range((limit - c) // 2 + 1, limit - c - 1):
             # we have trial values for "b" and "c", so we also have trial value for "a"
             yield [limit - b - c, b, c]
 

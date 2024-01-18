@@ -17,7 +17,7 @@ def solution(limit):
 assert solution(13195) == 29
 print(solution(600851475143))
 
-count = 1000000
+count = 100000
 scale = 1000000 # µsec
 
 import utils.timing

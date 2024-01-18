@@ -12,9 +12,8 @@ Substitute "c = limit - a - b" into the pythagorean equation and solve to get:
 '''
 
 def solution(limit):
-    for a in range(1, int(limit / 2) + 2):
-        # NOTE: the equation can return non-integer values even though "a" and "c" are integers, so truncate to integer before trial test.
-        b = int(limit + limit * limit / (2 * (a - limit)))
+    for a in range(1, limit // 2 + 2):
+        b = limit + limit * limit // (2 * (a - limit))
         c = limit - a - b
         if a * a + b * b == c * c:
             return a * b * c

@@ -21,7 +21,7 @@ def solution(limit):
     current = 1
     for x in range(2, limit + 1):
         # print(gcd(current, x))
-        current = current * int(x / gcd(current, x))
+        current = current * x // gcd(current, x)
     return current
 
 assert solution(10) == 2520
