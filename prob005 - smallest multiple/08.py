@@ -10,8 +10,6 @@ Use Euclid's improved algorithm to get GCD, and then use GCD to get LCM
 '''
 
 def gcd(a, b):
-    if a < b:
-        a, b = b, a
     a = a % b
     if a == 0:
         return b
@@ -20,7 +18,6 @@ def gcd(a, b):
 def solution(limit):
     current = 1
     for x in range(2, limit + 1):
-        # print(gcd(current, x))
         current = current * x // gcd(current, x)
     return current
 
