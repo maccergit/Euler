@@ -1,0 +1,17 @@
+Lattice paths
+-------------
+
+Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.
+
+How many such routes are there through a 20×20 grid?
+----------
+- the size of the grid in the problem is the number of squares - but the number of intersections is (n + 1) x (n + 1)
+- a simpler grid of a single square has 2 paths - include as a test case in addition of the problem statement
+- 2d array can be list of lists, or NumPy array (but NumPy arrays tend to be faster only when doing vector operations).
+
+Recursive divide and conquer:
+- if intersection is bottom, right edges : end recursion
+- if intersection is bottom edge : paths = paths from intersection to right
+- if intersection is right edge :paths = paths from intersection to bottom
+- paths = paths from intersection to right + paths from intersection to bottom
+final answer is paths from root intersection
