@@ -11,4 +11,4 @@ NOTE : Several files require extra Python modules to be installed in order to ru
 - sympy : Used for symbolic math operations in some projects.  Note that using it with PyDev requires Java 11 or later (I'm using Java 17) and a recent Eclipse.
 - pyprimesieve : Fast C/C++ implementation of prime sieve functions, used in some projects.
 ### Wiki
-This repo includes a Wiki with detailed documentation - select the "Wiki" tab in the repo to explore the Wiki.
+This repo includes a Wiki with detailed documentation - to explore the Wiki, select the "Wiki" tab in the repo or follow this link : https://github.com/maccergit/Euler/wiki
