@@ -13,12 +13,3 @@ Hence the difference between the sum of the squares of the first ten natural num
 
 
 Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
-----------
-
-Brute Force
-[10, 2.46] µsec
-[100, 11.93] µsec
-
-Gauss's Formula
-[10, 315.0] nsec
-[100, 326.3] nsec
