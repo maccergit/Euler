@@ -6,6 +6,7 @@ Created on Feb 23, 2020
 TODO - add unit tests
 '''
 
+# Generate all prime factors of provided number
 def gen_factors(limit):
     current = 2
     while current < limit:
