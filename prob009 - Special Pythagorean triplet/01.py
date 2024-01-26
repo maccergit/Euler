@@ -51,7 +51,7 @@ def solution(limit):
 assert solution(12) == 60
 print(solution(1000))
 
-count = 100
+count = 10
 scale = 1000
 
 import utils.timing

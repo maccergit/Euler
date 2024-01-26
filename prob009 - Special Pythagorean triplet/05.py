@@ -31,8 +31,8 @@ def solution(limit):
 assert solution(12) == 60
 print(solution(1000))
 
-count = 1000
-scale = 1000000
+count = 100
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([12, 1000], count, scale)
