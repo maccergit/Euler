@@ -39,7 +39,6 @@ number_words = {
 }
 
 # Convert a numeric value to its text representation.
-# TODO - implement this - just a placeholder right now
 def words(value):
     if value < 21:
         return number_words[value]
@@ -58,7 +57,6 @@ assert words(2) == "two"
 assert words(3) == "three"
 assert words(4) == "four"
 assert words(5) == "five"
-print(words(342))
 assert words(342) == "three hundred and forty-two"
 assert words(115) == "one hundred and fifteen"
 
