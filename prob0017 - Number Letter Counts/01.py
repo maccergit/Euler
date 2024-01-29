@@ -7,10 +7,23 @@ Created on Jan 25, 2024
 @author: johnmcalister
 '''
 
+digit_words = {
+    0 : "zero",
+    1 : "one",
+    2 : "two",
+    3 : "three",
+    4 : "four",
+    5 : "five",
+    6 : "six",
+    7 : "seven",
+    8 : "eight",
+    9 : "nine"
+}
+
 # Convert a numeric value to its text representation.
 # TODO - implement this - just a placeholder right now
 def words(value):
-    return "a"
+    return digit_words[value]
 
 assert words(1) == "one"
 assert words(2) == "two"
