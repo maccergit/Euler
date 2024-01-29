@@ -62,27 +62,26 @@ assert words(115) == "one hundred and fifteen"
 
 # Return the significant characters in the text representation of a value.
 # "significant characters" means we skip spaces and hyphens - so plain "len()" won't do the trick.
-# TODO - implement this - just a placeholder right now
-def count(value):
-    return len(words(value))
+def count_chars(value):
+    return len([x for x in words(value) if x not in " -"])
 
-assert count(1) == 3
-assert count(2) == 3
-assert count(3) == 5
-assert count(4) == 4
-assert count(5) == 4
-assert count(342) == 23
-assert count(115) == 20
+assert count_chars(1) == 3
+assert count_chars(2) == 3
+assert count_chars(3) == 5
+assert count_chars(4) == 4
+assert count_chars(5) == 4
+assert count_chars(342) == 23
+assert count_chars(115) == 20
 
 def solution(limit):
-    return sum(count(x + 1) for x in range(limit))
+    return sum(count_chars(x + 1) for x in range(limit))
 
 assert solution(5) == 19
 print(solution(1000))
 
-count = 1
-scale = 1
+count = 100
+scale = 1000
 
-# mport utils.timing
-# utils.timing.table_timing([15, 1000], count, scale)
-# utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500], count, scale, "prob0017.01")
+import utils.timing
+utils.timing.table_timing([5, 1000], count, scale)
+utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale, "prob0017.01")
