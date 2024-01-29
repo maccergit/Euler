@@ -7,7 +7,7 @@ Created on Jan 25, 2024
 @author: johnmcalister
 '''
 
-digit_words = {
+number_words = {
     0 : "zero",
     1 : "one",
     2 : "two",
@@ -17,19 +17,48 @@ digit_words = {
     6 : "six",
     7 : "seven",
     8 : "eight",
-    9 : "nine"
+    9 : "nine",
+    10 : "ten",
+    11 : "eleven", 
+    12 : "twelve",
+    13 : "thirteen",
+    14 : "fourteen", 
+    15 : "fifteen",
+    16 : "sixteen",
+    17 : "seventeen",
+    18 : "eighteen",
+    19 : "nineteen",
+    20 : "twenty",
+    30 : "thirty",
+    40 : "forty",
+    50 : "fifty",
+    60 : "sixty",
+    70 : "seventy",
+    80 : "eighty",
+    90 : "ninety"
 }
 
 # Convert a numeric value to its text representation.
 # TODO - implement this - just a placeholder right now
 def words(value):
-    return digit_words[value]
+    if value < 21:
+        return number_words[value]
+    if value < 100:
+        if value % 10 == 0:
+            return number_words[value]
+        return number_words[(value // 10) * 10] + "-" + number_words[value % 10]
+    if value < 1000:
+        if value % 100 == 0:
+            return number_words[value // 100] + " hundred"
+        return number_words[value // 100] + " hundred and " + words(value % 100)
+    return "one thousand"
 
 assert words(1) == "one"
 assert words(2) == "two"
 assert words(3) == "three"
 assert words(4) == "four"
 assert words(5) == "five"
+print(words(342))
 assert words(342) == "three hundred and forty-two"
 assert words(115) == "one hundred and fifteen"
 
