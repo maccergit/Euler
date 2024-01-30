@@ -49,7 +49,7 @@ assert solution(4) == 23
 current_data = problem_data
 print(solution(len(problem_data)))
 
-count = 1
+count = 10
 scale = 1000
 
 import utils.timing
