@@ -34,18 +34,24 @@ problem_data = [
     [ 4, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60,  4, 23]
 ]
 
-def solution(data):
+def get_max(data):
     if len(data) == 1:
         return data[0][0]
-    return data[0][0] + max(solution([x[:-1] for x in data[1:]]), solution([x[1:] for x in data[1:]]))
+    return data[0][0] + max(get_max([x[:-1] for x in data[1:]]), get_max([x[1:] for x in data[1:]]))
 
-assert solution([[5]]) == 5
-assert solution(sample_data) == 23
-print(solution(problem_data))
+def solution(limit):
+    return get_max([x for x in current_data[:limit]])
+
+current_data = sample_data
+assert solution(1) == 3
+assert solution(4) == 23
+
+current_data = problem_data
+print(solution(len(problem_data)))
 
 count = 1
-scale = 1
+scale = 1000
 
-#import utils.timing
-#utils.timing.table_timing([5, sample_data, problem_data], count, scale)
-#utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale, "prob0018.01")
+import utils.timing
+# utils.timing.table_timing([x + 1 for x in range(len(current_data))], count, scale)
+utils.timing.plot_timing([x + 1 for x in range(len(current_data))], count, scale, "prob0018.01")
