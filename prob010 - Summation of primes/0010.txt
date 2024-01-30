@@ -4,14 +4,3 @@ Summation of primes
 The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
 Find the sum of all the primes below two million.
-----------
-
-NOTE : While in theory this can be done using brute force, even fast machines are too slow for this problem (they are good to 100K, but not 1M).
-
-SymPy
-[10, 0.103] msec
-[2000000, 5.14] sec
-
-pyprimesieve
-[10, 3.53] µsec
-[2000000, 604.27] µsec
