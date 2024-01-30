@@ -1,0 +1,4 @@
+Maximum Path Sum II
+-------------------
+
+See problem 0018 for full description.  This problem is the same, but using the data provided in the "triangle.txt" file, which is 100 rows.
