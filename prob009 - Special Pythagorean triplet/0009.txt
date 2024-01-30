@@ -9,10 +9,3 @@ For example, 3² + 4² = 9 + 16 = 25 = 5².
 
 There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 Find the product abc.
-----------
-
-TODO - Matrix multiplication - see wikipedia "Tree of primitive Pythagorean triples" - IN PROGRESS
-
-TODO - Dickson's method, when s and t are coprime - see wikipedia "Formulas for generating Pythagorean triples", "Dickson's method"
-
-TODO - code from problem discussion (builds on diophantine)
