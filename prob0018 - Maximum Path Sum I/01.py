@@ -6,7 +6,7 @@ Created on Jan 29, 2024
 
 @author: johnmcalister
 
-Direct approach - WORK IN PROGRESS
+Direct approach
 '''
 
 sample_data = [
@@ -35,14 +35,17 @@ problem_data = [
 ]
 
 def solution(data):
-    return 0
+    if len(data) == 1:
+        return data[0][0]
+    return data[0][0] + max(solution([x[:-1] for x in data[1:]]), solution([x[1:] for x in data[1:]]))
 
+assert solution([[5]]) == 5
 assert solution(sample_data) == 23
 print(solution(problem_data))
 
 count = 1
 scale = 1
 
-# import utils.timing
-# utils.timing.table_timing([5, 1000], count, scale)
-# utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale, "prob0018.01")
+#import utils.timing
+#utils.timing.table_timing([5, sample_data, problem_data], count, scale)
+#utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale, "prob0018.01")
