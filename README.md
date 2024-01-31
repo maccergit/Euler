@@ -10,6 +10,7 @@ NOTE : Several files require extra Python modules to be installed in order to ru
 - math : This is a standard library, but "math.prod()" was introduced in Python 3.8.  The "utils" project includes an implementation of "prod()" for pre-3.8 versions.
 - sympy : Used for symbolic math operations in some projects.  Note that using it with PyDev requires Java 11 or later (I'm using Java 17) and a recent Eclipse.
 - pyprimesieve : Fast C/C++ implementation of prime sieve functions, used in some projects.
+- numpy : Used for vector/array processing in some projects.
 ### Wiki
 This repo includes a Wiki with detailed documentation - to explore the Wiki, select the "Wiki" tab in the repo or follow this link : https://github.com/maccergit/Euler/wiki
 ### License
