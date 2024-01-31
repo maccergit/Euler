@@ -6,7 +6,7 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-Sieve - accumulating list of primes
+Sieve - same as before, but adjust start location and stride to skip several duplicated values.
 '''
 
 def solution(limit):
