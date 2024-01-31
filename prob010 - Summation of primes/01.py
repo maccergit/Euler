@@ -6,7 +6,7 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-Sieve - using dict
+Sieve - using dict and accumulating list of primes
 '''
 
 def solution(limit):

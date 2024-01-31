@@ -17,7 +17,7 @@ def solution(limit):
         if not sieve[current]:
             current += 1
         else:
-            for index in range(current + current, limit, current):
+            for index in range(current * current, limit, current if current == 2 else current + current):
                 sieve[index] = False
             primes.append(current)
             current += 1
@@ -27,7 +27,7 @@ assert solution(10) == 17
 print(solution(2000000))
 
 count = 2
-scale = 1
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([10, 2000000], count, scale)
