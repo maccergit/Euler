@@ -34,20 +34,24 @@ class Month:
             self.days = Month.months[2] + 1
         else:
             self.days = Month.months[month]
+        self.nextStart = (day + self.days) % 7
     
-    def nextStart(self):
-        return((self.day + self.days) % 7)
+    def assertDays(self, expectedDays):
+        assert self.days == expectedDays
+    
+    def assertNextStart(self, expectedStart):
+        assert self.nextStart == expectedStart
 
 month1 = Month(1, 1)
 month2 = Month(2, 4)
 month3 = Month(2, 4, True)
 
-assert month1.days == 31
-assert month1.nextStart() == 4
-assert month2.days == 28
-assert month2.nextStart() == 4
-assert month3.days == 29
-assert month3.nextStart() == 5
+month1.assertDays(31)
+month1.assertNextStart(4)
+month2.assertDays(28)
+month2.assertNextStart(4)
+month3.assertDays(29)
+month3.assertNextStart(5)
 
 class Year:
     # Python does not have method overloading, so use the easy way of using an optional parm
@@ -62,13 +66,25 @@ class Year:
                 myYear = Year(myYear.year + 1, myYear.nextStart())
         self.months = {1 : Month(1, day, self.isLeap)}
         for x in range(2, 13):
-            self.months[x] = Month(x, self.months[x - 1].nextStart(), self.isLeap)
+            self.months[x] = Month(x, self.months[x - 1].nextStart, self.isLeap)
     
     def nextStart(self):
         return((self.months[1].day + (366 if self.isLeap else 365)) % 7)
     
     def sundays(self):
         return [self.months[x].day for x in self.months].count(0)
+    
+    def assertIsLeap(self):
+        assert self.isLeap
+    
+    def assertIsNotLeap(self):
+        assert not self.isLeap
+    
+    def assertNextStart(self, expectedStart):
+        assert self.nextStart() == expectedStart
+    
+    def assertSundays(self, expectedSundays):
+        assert self.sundays() == expectedSundays
 
 year1900 = Year(1900)
 year1901 = Year(1901)
@@ -80,23 +96,23 @@ year2000 = Year(2000)
 year2023 = Year(2023)
 year2024 = Year(2024)
 
-assert year2000.isLeap
-assert year2024.isLeap
-assert not year2023.isLeap
-assert not year1900.isLeap
+year2000.assertIsLeap()
+year2024.assertIsLeap()
+year2023.assertIsNotLeap()
+year1900.assertIsNotLeap()
 
-assert year1900.nextStart() == 2
-assert year1901.nextStart() == 3
-assert year1902.nextStart() == 4
-assert year1903.nextStart() == 5
-assert year1904.nextStart() == 0
+year1900.assertNextStart(2)
+year1901.assertNextStart(3)
+year1902.assertNextStart(4)
+year1903.assertNextStart(5)
+year1904.assertNextStart(0)
 
-assert year1900.sundays() == 2
-assert year1901.sundays() == 2
-assert year1902.sundays() == 1
-assert year1903.sundays() == 3
-assert year1904.sundays() == 1
-assert year1905.sundays() == 2
+year1900.assertSundays(2)
+year1901.assertSundays(2)
+year1902.assertSundays(1)
+year1903.assertSundays(3)
+year1904.assertSundays(1)
+year1905.assertSundays(2)
 
 # "limit" will be ending year (must be after 1900)
 def solution(limit):
@@ -116,4 +132,4 @@ scale = 1000
 
 import utils.timing
 utils.timing.table_timing([1900, 1901, 1902, 1903, 1904, 1905, 2000], count, scale)
-utils.timing.plot_timing([x for x in range(1901, 2001)], count, scale, "prob0019.02", ticks=False)
+utils.timing.plot_timing([x for x in range(1901, 2001)], count, scale, "prob0019.03", ticks=False)
