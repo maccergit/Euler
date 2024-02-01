@@ -6,7 +6,7 @@ Created on Jan 30, 2024
 
 @author: johnmcalister
 
-Direct approach
+Direct approach - skip by years to current year, then iterate over months.
 '''
 
 months = {
@@ -36,11 +36,7 @@ assert not is_leap(2023)
 assert not is_leap(1900)
 
 def get_start_next_year(day, year):
-    for month in range(1, 13):
-        day = (day + months[month])
-    if is_leap(year):
-        day += 1
-    return day % 7
+    return (day + (366 if is_leap(year) else 365)) % 7
 
 assert get_start_next_year(1, 1900) == 2
 assert get_start_next_year(2, 1901) == 3
@@ -104,4 +100,4 @@ scale = 1000
 
 import utils.timing
 utils.timing.table_timing([1900, 1901, 1902, 1903, 1904, 1905, 2000], count, scale)
-utils.timing.plot_timing([x for x in range(1901, 2001)], count, scale, "prob0019.01", ticks=False)
+utils.timing.plot_timing([x for x in range(1901, 2001)], count, scale, "prob0019.02", ticks=False)
