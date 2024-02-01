@@ -6,7 +6,7 @@ Created on Jan 30, 2024
 
 @author: johnmcalister
 
-Direct approach - skip by years to current year, then iterate over months.
+Direct approach - use OOP
 '''
 
 class Month:
