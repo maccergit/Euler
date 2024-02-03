@@ -47,11 +47,10 @@ dataNP = np.array(probData)
 
 # correct
 def getMax(limit, dt):
-    tmparray = np.array([dt[y - limit + 1 : y + 1, x] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
-                        [dt[x, y - limit + 1 : y + 1] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
-                        [[dt[y - offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
-                        [[dt[y + offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)])
-    return(tmparray.prod(axis = 1).max())
+    return np.array([dt[y - limit + 1 : y + 1, x] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
+                    [dt[x, y - limit + 1 : y + 1] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
+                    [[dt[y - offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
+                    [[dt[y + offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)]).prod(axis = 1).max()
 
 def solution(limit):
     return getMax(limit, np.pad(data, limit - 1, 'constant', constant_values = 0))
