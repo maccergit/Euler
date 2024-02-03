@@ -9,7 +9,6 @@ Created on Feb 19, 2020
 NumPy - simply replace lists with NumPy arrays
 '''
 
-import math
 import numpy as np
 
 testData = [
@@ -46,45 +45,36 @@ origData = [
 probData = [[int(y) for y in x.split()] for x in origData]
 dataNP = np.array(probData)
 
-def getHorz(row_index, col_index, limit):
-    # skip over elements too close to right side for horz
-    if (col_index + limit) < (len(data[0]) + 1):
-        return(math.prod(data[row_index][col_index:col_index + limit]))
-    else:
-        return 0
+# correct
+def getVert(limit, dt):
+    tmparray = np.array([dt[y - limit + 1 : y + 1, x] for y in range(limit - 1, len(dt[0])) for x in range(len(dt[0]))])
+    return(tmparray.prod(axis = 1).max())
 
-def getVert(row_index, col_index, limit):
-    # skip over elements too close to bottom side for vert
-    if (row_index + limit) < (len(data) + 1):
-        return(math.prod(data[x][col_index] for x in range(row_index, row_index + limit)))
-    else:
-        return 0
+# correct
+def getHorz(limit, dt):
+    tmparray = np.array([dt[x, y - limit + 1 : y + 1] for y in range(limit - 1, len(dt[0])) for x in range(len(dt[0]))])
+    return(tmparray.prod(axis = 1).max())
 
-def getDiagUp(row_index, col_index, limit):
-    # skip over elements too close to right side or top side for diag up
-    if ((col_index + limit) < (len(data[0]) + 1)) and ((row_index + 1) > (limit - 1)):
-        return(math.prod(data[row_index - offset][col_index + offset] for offset in range(limit)))
-    else:
-        return 0
+# correct
+def getDiagUp(limit, dt):
+    tmparray = np.array([[dt[y - offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0])) for x in range(len(dt[0]) - limit + 1)])
+    return(tmparray.prod(axis = 1).max())
 
-def getDiagDown(row_index, col_index, limit):
-    # skip over elements too close to right side or bottom side for diag down
-    if ((col_index + limit) < (len(data[0]) + 1)) and ((row_index + limit) < (len(data) + 1)):
-        return(math.prod(data[row_index + offset][col_index + offset] for offset in range(limit)))
-    else:
-        return 0
+# correct
+def getDiagDown(limit, dt):
+    tmparray = np.array([[dt[y + offset, x + offset] for offset in range(limit)] for y in range(0, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)])
+    return(tmparray.prod(axis = 1).max())
 
 # find value for a given cell
-def getMax(row_index, col_index, limit):
-    horz = getHorz(row_index, col_index, limit)
-    vert = getVert(row_index, col_index, limit)
-    diag_up = getDiagUp(row_index, col_index, limit)
-    diag_down = getDiagDown(row_index, col_index, limit)
+def getMax(limit, dt):
+    horz = getHorz(limit, dt)
+    vert = getVert(limit, dt)
+    diag_up = getDiagUp(limit, dt)
+    diag_down = getDiagDown(limit, dt)
     return(max(horz, vert, diag_up, diag_down))
 
-# iterate over each cell in the array and find maximum of returned values for each cell
 def solution(limit):
-    return(max(getMax(row_index, col_index, limit) for row_index in range(len(data)) for col_index in range(len(data[0]))))
+    return getMax(limit, np.pad(data, limit - 1, 'constant', constant_values = 0))
 
 data = testDataNP
 assert solution(1) == 9
@@ -99,4 +89,4 @@ scale = 1000
 
 import utils.timing
 utils.timing.table_timing([1, 4], count, scale)
-utils.timing.plot_timing([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], count, scale, "prob0011.01")
+utils.timing.plot_timing([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], count, scale, "prob0011.05")

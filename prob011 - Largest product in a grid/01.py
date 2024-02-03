@@ -40,7 +40,7 @@ origData = [
 "01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"
 ]
 
-data = [[int(y) for y in x.split()] for x in origData]
+probData = [[int(y) for y in x.split()] for x in origData]
 
 def getHorz(row_index, col_index, limit):
     # skip over elements too close to right side for horz
@@ -82,11 +82,12 @@ def getMax(row_index, col_index, limit):
 def solution(limit):
     return(max(getMax(row_index, col_index, limit) for row_index in range(len(data)) for col_index in range(len(data[0]))))
 
-# data = testData
-# assert solution(1) == 9
-# assert solution(2) == 72
-# assert solution(3) == 280
+data = testData
+assert solution(1) == 9
+assert solution(2) == 72
+assert solution(3) == 280
 
+data = probData
 print(solution(4))
 
 count = 100
