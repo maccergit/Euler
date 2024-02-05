@@ -6,7 +6,7 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-Brute force
+Use home grown factorization code
 '''
 
 import utils.factor
@@ -27,12 +27,8 @@ assert triangle(9) == 45
 assert triangle(10) == 55
 
 def num_divisors(n):
-    factors = {}
     x = [y for y in utils.factor.gen_factors(n)]
-    for y in {z for z in x}:
-        factor_count = x.count(y)
-        if y not in factors or factor_count > factors[y]:
-            factors[y] = factor_count
+    factors = {y : x.count(y) for y in {z for z in x}}
     return math.prod(factors[factor] + 1 for factor in factors)
 
 def solution(limit):
