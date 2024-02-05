@@ -6,7 +6,7 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-NumPy - simply replace lists with NumPy arrays
+NumPy - replace some of list comprehension with NumPy ability to index entire row/column.
 '''
 
 import numpy as np

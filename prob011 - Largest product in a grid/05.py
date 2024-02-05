@@ -6,7 +6,7 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-NumPy - simply replace lists with NumPy arrays
+NumPy - fist pass at vectorizing NumPy approach
 '''
 
 import numpy as np
