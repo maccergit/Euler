@@ -11,6 +11,7 @@ Created on Feb 19, 2020
 
 import pyprimesieve
 import math
+import functools
 
 def triangle(n):
     return (n + 1) * n // 2
@@ -26,6 +27,7 @@ assert triangle(8) == 36
 assert triangle(9) == 45
 assert triangle(10) == 55
 
+@functools.cache
 def num_divisors(n):
     return math.prod(x[1] + 1 for x in pyprimesieve.factorize(n))
 

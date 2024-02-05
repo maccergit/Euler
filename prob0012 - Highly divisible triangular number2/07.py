@@ -7,13 +7,14 @@ Created on Feb 19, 2020
 @author: johnmcalister
 '''
 
-# pyprimesieve with coprimes
+# Brute force with coprimes and memoization
 
-import pyprimesieve
+import utils.factor
 import math
+import functools
 
 def triangle(n):
-    return (n + 1) * n // 2
+    return (n + 1) * n / 2
 
 assert triangle(1) == 1
 assert triangle(2) == 3
@@ -26,13 +27,20 @@ assert triangle(8) == 36
 assert triangle(9) == 45
 assert triangle(10) == 55
 
+@functools.cache
 def num_divisors(n):
-    return math.prod(x[1] + 1 for x in pyprimesieve.factorize(n))
+    factors = {}
+    x = [y for y in utils.factor.gen_factors(n)]
+    for y in {z for z in x}:
+        factor_count = x.count(y)
+        if y not in factors or factor_count > factors[y]:
+            factors[y] = factor_count
+    return math.prod(factors[factor] + 1 for factor in factors)
 
 def triangle_divisors(n):
     if n % 2 == 0:
-        return num_divisors(n // 2) * num_divisors(n + 1)
-    return num_divisors(n) * num_divisors((n + 1) // 2)
+        return num_divisors(n / 2) * num_divisors(n + 1)
+    return num_divisors(n) * num_divisors((n + 1) / 2)
 
 def solution(limit):
     current = 1
@@ -44,7 +52,7 @@ assert solution(5) == 28
 print(solution(500))
 
 count = 100
-scale = 1000 # msec
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([10, 500], count, scale)

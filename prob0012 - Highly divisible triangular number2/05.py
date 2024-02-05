@@ -9,7 +9,7 @@ Created on Feb 19, 2020
 
 # SymPy with coprimes
 
-from sympy import divisor_count
+import sympy
 
 def triangle(n):
     return (n + 1) * n // 2
@@ -27,8 +27,8 @@ assert triangle(10) == 55
 
 def triangle_divisors(n):
     if n % 2 == 0:
-        return divisor_count(n // 2) * divisor_count(n + 1)
-    return divisor_count(n) * divisor_count((n + 1) // 2)
+        return sympy.divisor_count(n // 2) * sympy.divisor_count(n + 1)
+    return sympy.divisor_count(n) * sympy.divisor_count((n + 1) // 2)
 
 def solution(limit):
     current = 1

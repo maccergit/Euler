@@ -7,10 +7,10 @@ Created on Feb 19, 2020
 @author: johnmcalister
 '''
 
-# pyprimesieve with coprimes
+# SymPy with coprimes and memoization
 
-import pyprimesieve
-import math
+import sympy
+import functools
 
 def triangle(n):
     return (n + 1) * n // 2
@@ -26,13 +26,14 @@ assert triangle(8) == 36
 assert triangle(9) == 45
 assert triangle(10) == 55
 
-def num_divisors(n):
-    return math.prod(x[1] + 1 for x in pyprimesieve.factorize(n))
+@functools.cache
+def divisor_count(n):
+    return sympy.divisor_count(n)
 
 def triangle_divisors(n):
     if n % 2 == 0:
-        return num_divisors(n // 2) * num_divisors(n + 1)
-    return num_divisors(n) * num_divisors((n + 1) // 2)
+        return divisor_count(n // 2) * divisor_count(n + 1)
+    return divisor_count(n) * divisor_count((n + 1) // 2)
 
 def solution(limit):
     current = 1
@@ -43,7 +44,7 @@ def solution(limit):
 assert solution(5) == 28
 print(solution(500))
 
-count = 100
+count = 10
 scale = 1000 # msec
 
 import utils.timing

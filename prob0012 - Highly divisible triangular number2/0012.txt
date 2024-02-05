@@ -17,28 +17,3 @@ Let us list the factors of the first seven triangle numbers:
 We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?
-----------
-
-Brute Force
-[10, 59.96] µsec
-[500, 2.26] sec
-
-SymPy
-[10, 0.396] msec
-[500, 825.9] msec
-
-pyprimesieve
-[10, 20.81] µsec
-[500, 39.01] msec
-
-Brute Force with coprimes
-[10, 115.99] µsec
-[500, 2.48] sec
-
-SymPy with coprimes
-[10, 0.682] msec
-[500, 630.9] msec
-
-pyprimesieve with coprimes
-[10, 41.19] µsec
-[500, 37.52] msec

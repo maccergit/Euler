@@ -9,7 +9,7 @@ Created on Feb 19, 2020
 
 # SymPy
 
-from sympy import divisor_count
+import sympy
 
 def triangle(n):
     return (n + 1) * n // 2
@@ -27,7 +27,7 @@ assert triangle(10) == 55
 
 def solution(limit):
     current = 1
-    while divisor_count(triangle(current)) <= limit:
+    while sympy.divisor_count(triangle(current)) <= limit:
         current += 1
     return triangle(current)
 

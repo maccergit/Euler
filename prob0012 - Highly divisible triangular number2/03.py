@@ -9,7 +9,7 @@ Created on Feb 19, 2020
 
 # pyprimesieve
 
-from pyprimesieve import factorize
+import pyprimesieve
 import math
 
 def triangle(n):
@@ -27,7 +27,7 @@ assert triangle(9) == 45
 assert triangle(10) == 55
 
 def num_divisors(n):
-    return math.prod(x[1] + 1 for x in factorize(n))
+    return math.prod(x[1] + 1 for x in pyprimesieve.factorize(n))
 
 def solution(limit):
     current = 1
