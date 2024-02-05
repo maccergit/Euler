@@ -6,7 +6,7 @@ Created on Feb 19, 2020
 
 @author: johnmcalister
 
-NumPy - simply replace lists with NumPy arrays
+NumPy - build large results array to take advantage of vectorization
 '''
 
 import numpy as np
@@ -46,28 +46,11 @@ probData = [[int(y) for y in x.split()] for x in origData]
 dataNP = np.array(probData)
 
 # correct
-def getVert(limit, dt):
-    return np.array([dt[y - limit + 1 : y + 1, x] for y in range(limit - 1, len(dt[0])) for x in range(len(dt[0]))]).prod(axis = 1).max()
-
-# correct
-def getHorz(limit, dt):
-    return np.array([dt[x, y - limit + 1 : y + 1] for y in range(limit - 1, len(dt[0])) for x in range(len(dt[0]))]).prod(axis = 1).max()
-
-# correct
-def getDiagUp(limit, dt):
-    return np.array([[dt[y - offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0])) for x in range(len(dt[0]) - limit + 1)]).prod(axis = 1).max()
-
-# correct
-def getDiagDown(limit, dt):
-    return np.array([[dt[y + offset, x + offset] for offset in range(limit)] for y in range(0, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)]).prod(axis = 1).max()
-
-# find value for a given cell
 def getMax(limit, dt):
-    horz = getHorz(limit, dt)
-    vert = getVert(limit, dt)
-    diag_up = getDiagUp(limit, dt)
-    diag_down = getDiagDown(limit, dt)
-    return(max(horz, vert, diag_up, diag_down))
+    return np.array([dt[y - limit + 1 : y + 1, x] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
+                    [dt[x, y - limit + 1 : y + 1] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
+                    [[dt[y - offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
+                    [[dt[y + offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)]).prod(axis = 1).max()
 
 def solution(limit):
     return getMax(limit, np.pad(data, limit - 1, 'constant', constant_values = 0))
