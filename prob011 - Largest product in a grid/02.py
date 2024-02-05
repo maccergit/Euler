@@ -99,4 +99,4 @@ scale = 1000
 
 import utils.timing
 utils.timing.table_timing([1, 4], count, scale)
-utils.timing.plot_timing([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], count, scale, "prob0011.01")
+utils.timing.plot_timing([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], count, scale, "prob0011.02")
