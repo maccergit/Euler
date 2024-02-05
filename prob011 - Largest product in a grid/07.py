@@ -7,6 +7,8 @@ Created on Feb 19, 2020
 @author: johnmcalister
 
 NumPy - build large results array to take advantage of vectorization
+
+TODO : see if the stride_tricks library might help here : numpy.lib.stride_tricks.as_strided seems to be an especially powerful way to select multiple slices at a time.
 '''
 
 import numpy as np
@@ -47,10 +49,10 @@ dataNP = np.array(probData)
 
 # correct
 def getMax(limit, dt):
-    return np.array([dt[y - limit + 1 : y + 1, x] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
-                    [dt[x, y - limit + 1 : y + 1] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
-                    [[dt[y - offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)] +
-                    [[dt[y + offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt[0]) - limit + 1) for x in range(len(dt[0]) - limit + 1)]).prod(axis = 1).max()
+    return np.array([dt[y - limit + 1 : y + 1, x] for y in range(limit - 1, len(dt) - limit + 1) for x in range(len(dt) - limit + 1)] +
+                    [dt[x, y - limit + 1 : y + 1] for y in range(limit - 1, len(dt) - limit + 1) for x in range(len(dt) - limit + 1)] +
+                    [[dt[y - offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt) - limit + 1) for x in range(len(dt) - limit + 1)] +
+                    [[dt[y + offset, x + offset] for offset in range(limit)] for y in range(limit - 1, len(dt) - limit + 1) for x in range(len(dt) - limit + 1)]).prod(axis = 1).max()
 
 def solution(limit):
     return getMax(limit, np.pad(data, limit - 1, 'constant', constant_values = 0))

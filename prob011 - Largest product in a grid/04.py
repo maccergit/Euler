@@ -7,6 +7,11 @@ Created on Feb 19, 2020
 @author: johnmcalister
 
 NumPy - as previous, but use NumPy's diagonal processing
+
+TODO : note that the diagonal is done against a sliding window of a subset of the data.  NumPy includes library function that implements a sliding window : 
+  numpy.lib.stride_tricks.sliding_window_view
+
+May also be able to use this for horz and vert partitions.
 '''
 
 import math
