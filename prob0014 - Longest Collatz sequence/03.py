@@ -48,6 +48,7 @@ assert collatz_length(12) == 10
 assert collatz_length(13) == 10
 
 def solution(limit):
+    collatz_length.cache_clear()
     max_length = 0
     current = 0
     for n in range(1, limit + 1):

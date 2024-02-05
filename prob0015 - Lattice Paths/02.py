@@ -6,7 +6,7 @@ Created on Jan 22, 2024
 
 @author: johnmcalister
 
-Direct recursion
+Direct recursion with memoization
 '''
 
 import functools
@@ -22,6 +22,7 @@ def paths(x, y, limit):
     return paths(x, y + 1, limit) + paths(x + 1, y, limit)
 
 def solution(limit):
+    paths.cache_clear()
     return paths(0, 0, limit)
 
 assert solution(0) == 1
@@ -29,8 +30,8 @@ assert solution(1) == 2
 assert solution(2) == 6
 print(solution(20))
 
-count = 1000000
-scale = 1000000000
+count = 100
+scale = 1000
 
 import utils.timing
 utils.timing.table_timing([2, 20], count, scale)
