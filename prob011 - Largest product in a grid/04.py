@@ -63,7 +63,7 @@ def getVert(row_index, col_index, limit):
 def getDiagUp(row_index, col_index, limit):
     # skip over elements too close to right side or top side for diag up
     if ((col_index + limit) < (len(data[0]) + 1)) and ((row_index + 1) > (limit - 1)):
-        return(math.prod(np.flipud(data[row_index - limit:row_index + 1, col_index:col_index + limit]).diagonal()))
+        return(math.prod(data[row_index - limit:row_index + 1, col_index:col_index + limit:-1].diagonal()))
     else:
         return 0
 
