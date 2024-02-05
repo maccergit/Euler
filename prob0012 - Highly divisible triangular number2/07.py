@@ -29,12 +29,8 @@ assert triangle(10) == 55
 
 @functools.cache
 def num_divisors(n):
-    factors = {}
     x = [y for y in utils.factor.gen_factors(n)]
-    for y in {z for z in x}:
-        factor_count = x.count(y)
-        if y not in factors or factor_count > factors[y]:
-            factors[y] = factor_count
+    factors = {y : x.count(y) for y in {z for z in x}}
     return math.prod(factors[factor] + 1 for factor in factors)
 
 def triangle_divisors(n):
@@ -43,6 +39,7 @@ def triangle_divisors(n):
     return num_divisors(n) * num_divisors((n + 1) / 2)
 
 def solution(limit):
+    num_divisors.cache_clear()
     current = 1
     while triangle_divisors(current) <= limit:
         current += 1
@@ -51,8 +48,8 @@ def solution(limit):
 assert solution(5) == 28
 print(solution(500))
 
-count = 100
-scale = 1000
+count = 1
+scale = 1
 
 import utils.timing
 utils.timing.table_timing([10, 500], count, scale)

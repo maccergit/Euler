@@ -36,6 +36,7 @@ def triangle_divisors(n):
     return divisor_count(n) * divisor_count((n + 1) // 2)
 
 def solution(limit):
+    divisor_count.cache_clear()
     current = 1
     while triangle_divisors(current) <= limit:
         current += 1
