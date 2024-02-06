@@ -27,7 +27,7 @@ def solution(limit):
 
 print(solution(10000))
 
-count = 1
+count = 3
 scale = 1
 
 import utils.timing
