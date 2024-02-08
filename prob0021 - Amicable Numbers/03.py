@@ -11,14 +11,14 @@ Use utils.factor version of calulating sum of divisors - uses the product of (pr
 NOTE: Again, utils.factor.sumDivisors() generates all divisors, not just proper divisors - so we need to remove the number being factored from the sum.
 '''
 
-import utils.factor
+import utils.factor as factor
 
-assert utils.factor.sumDivisors(220) - 220 == 284
-assert utils.factor.sumDivisors(284) - 284 == 220
+assert factor.sumDivisors(220) - 220 == 284
+assert factor.sumDivisors(284) - 284 == 220
 
 def isAmicable(x):
-    divSum = utils.factor.sumDivisors(x) - x
-    return x == utils.factor.sumDivisors(divSum) - divSum and x != divSum
+    divSum = factor.sumDivisors(x) - x
+    return x == factor.sumDivisors(divSum) - divSum and x != divSum
 
 assert isAmicable(220)
 assert isAmicable(284)
@@ -28,7 +28,7 @@ def solution(limit):
 
 print(solution(10000))
 
-count = 3
+count = 10
 scale = 1000
 
 import utils.timing

@@ -11,14 +11,14 @@ Direct approach with utils.fastfactor version of divisors.  Similar to utils.fac
 NOTE: utils.fastfactor.gen_divisors() generates all divisors, not just proper divisors - so we need to remove the number being factored from the list of divisors.
 '''
 
-import utils.fastfactor
+import utils.fastfactor as factor
 
-assert {x for x in utils.fastfactor.gen_divisors(220)} - {220} == {1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110}
-assert {x for x in utils.fastfactor.gen_divisors(284)} - {284} == {1, 2, 4, 71, 142}
+assert {x for x in factor.gen_divisors(220)} - {220} == {1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110}
+assert {x for x in factor.gen_divisors(284)} - {284} == {1, 2, 4, 71, 142}
 
 def isAmicable(x):
-    divSum = sum(utils.fastfactor.gen_divisors(x)) - x
-    return x == sum(utils.fastfactor.gen_divisors(divSum)) - divSum and x != divSum
+    divSum = sum(factor.gen_divisors(x)) - x
+    return x == sum(factor.gen_divisors(divSum)) - divSum and x != divSum
 
 assert isAmicable(220)
 assert isAmicable(284)
@@ -28,7 +28,7 @@ def solution(limit):
 
 print(solution(10000))
 
-count = 3
+count = 5
 scale = 1000
 
 import utils.timing

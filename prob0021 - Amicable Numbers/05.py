@@ -12,14 +12,14 @@ fastfactor uses pyprime sieve to get prime factors.
 NOTE: Again, utils.fastfactor.sumDivisors() generates all divisors, not just proper divisors - so we need to remove the number being factored from the sum.
 '''
 
-import utils.fastfactor
+import utils.fastfactor as factor
 
-assert utils.fastfactor.sumDivisors(220) - 220 == 284
-assert utils.fastfactor.sumDivisors(284) - 284 == 220
+assert factor.sumDivisors(220) - 220 == 284
+assert factor.sumDivisors(284) - 284 == 220
 
 def isAmicable(x):
-    divSum = utils.fastfactor.sumDivisors(x) - x
-    return x == utils.fastfactor.sumDivisors(divSum) - divSum and x != divSum
+    divSum = factor.sumDivisors(x) - x
+    return x == factor.sumDivisors(divSum) - divSum and x != divSum
 
 assert isAmicable(220)
 assert isAmicable(284)
@@ -29,7 +29,7 @@ def solution(limit):
 
 print(solution(10000))
 
-count = 3
+count = 10
 scale = 1000
 
 import utils.timing
