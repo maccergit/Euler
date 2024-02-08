@@ -112,15 +112,14 @@ data = [
 53503534226472524250874054075591789781264330331690
 ]
 
+# "limit" is ignored for this problem - we just need it to satisfy the timing API
 def solution(limit):
     return str(sum(data))[:10]
 
-# assert solution(10) == 17
 print(solution(0))
 
 count = 1000000
-scale = 1000000 # µsec
+scale = 1000000
 
 import utils.timing
 utils.timing.table_timing([0], count, scale)
-# util.timing.plot_timing([500000, 1000000, 1500000, 2000000], count, scale)
