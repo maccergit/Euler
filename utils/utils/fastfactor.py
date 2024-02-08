@@ -6,18 +6,16 @@ Created on Feb 23, 2020
 TODO - convert unit tests to PyUnit
 TODO - Use DocStrings
 '''
-from utils.prod import prod
+import pyprimesieve
+import math
+import itertools
 
 # Generate all prime factors of provided number
 def gen_factors(limit):
-    current = 2
-    while (current * current) < (limit + 1):
-        if limit % current != 0:
-            current += 1
-        else:
-            yield current
-            limit = limit // current
-    yield limit
+    factors = pyprimesieve.factorize(limit)
+    for x in factors:
+        for _ in range(x[1]):
+            yield x[0]
 
 def testGenFactors(limit, expected):
     assert [x for x in gen_factors(limit)] == expected
@@ -36,13 +34,7 @@ testGenFactors(12, [2, 2, 3])
 
 # Return dictionary of prime factors in {prime : power} format
 def factPow(limit):
-    factors = {}
-    for factor in gen_factors(limit):
-        if factor not in factors:
-            factors[factor] = 1
-        else:
-            factors[factor] += 1
-    return factors
+    return {factor : power for (factor, power) in pyprimesieve.factorize(limit)}
 
 assert factPow(2) == {2 : 1}
 assert factPow(3) == {3 : 1}
@@ -58,13 +50,8 @@ assert factPow(12) == {2 : 2, 3 : 1}
 
 # Generate all divisors of provided number - not well ordered
 def gen_divisors(limit):
-    current = 1
-    while (current * current) < (limit + 1):
-        if limit % current == 0:
-            yield current
-            if current != limit // current:
-                yield limit // current
-        current += 1
+    s = list(gen_factors(limit))
+    return (y for y in {math.prod(x) for x in itertools.chain.from_iterable(itertools.combinations(s, r) for r in range(len(s) + 1))})
 
 def testGenDivisors(limit, expected):
     assert {x for x in gen_divisors(limit)} == expected
@@ -83,7 +70,7 @@ testGenDivisors(11, {1, 11})
 testGenDivisors(12, {1, 2, 3, 4, 6, 12})
 
 def sumDivisors(limit):
-    return prod((factor ** (power + 1) - 1) // (factor - 1) for factor, power in factPow(limit).items() if factor > 1)
+    return math.prod((factor ** (power + 1) - 1) // (factor - 1) for factor, power in factPow(limit).items())
 
 for limit in range(2, 13):
     assert sumDivisors(limit) == sum(x for x in gen_divisors(limit))

@@ -11,3 +11,7 @@ However, this upper limit cannot be reduced any further by analysis even though 
 as the sum of two abundant numbers is less than this limit.
 
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+---
+NOTE :
+prob0012 deals with the _count_ of divisors, not the _sum_.
+prob0021 deals with the _sum_ of divisors, just like this problem.
