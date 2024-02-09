@@ -42,7 +42,7 @@ def plot_timing(parms, count, scale, title = '', ticks = True):
         plt.xticks(parms)
     plt.title(title)
     plt.xlabel("limit")
-    ylabel = "time (" + getScaleUnits + ")"
+    ylabel = "time (" + getScaleUnits(scale) + ")"
     plt.ylabel(ylabel)
     plt.grid()
     plt.show()

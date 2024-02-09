@@ -7,11 +7,6 @@ Created on Jan 16, 2024
 @author: johnmcalister
 
 Brute force
-
-TODO - start optimizing :
-- can working in reverse help?  Start with 1, then can be derived only from 2 (cuz odds add 1).  From 2, prev has to be 4 (cuz odds multiple by 3).  From 4, prev could be 8 or 1 - but 1 is
-the exit condition.  From 8, prev must be 16, cuz (8 - 1) not divisible by 3.  From 16, next could be 32 or 5.  Not sure if this is useful.
-- look for other tips from the problem overview.
 '''
 
 # Generator to build Collatz sequence from a starting number
@@ -61,4 +56,4 @@ scale = 1
 
 import utils.timing
 utils.timing.table_timing([13, 1000000], count, scale)
-utils.timing.plot_timing([1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000], count, scale)
+utils.timing.plot_timing([200000, 400000, 600000, 800000, 1000000], count, scale, "prob0014.01")

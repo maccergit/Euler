@@ -7,7 +7,7 @@ Created on Feb 19, 2020
 @author: johnmcalister
 '''
 
-# pyprimesieve with coprimes
+# pyprimesieve with coprimes and memoization
 
 import pyprimesieve
 import math
