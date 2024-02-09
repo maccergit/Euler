@@ -6,12 +6,15 @@ Created on Feb 6, 2024
 
 @author: johnmcalister
 
-Direct approach
+Direct approach with memoization
 '''
+
+import functools
 
 testData = "012"
 probData = "0123456789"
 
+@functools.cache
 def permutations(s):
     if (len(s)) == 1:
         return [s]
@@ -26,6 +29,7 @@ assert permutations("01") == ["01", "10"]
 assert permutations("012") == ["012", "021", "102", "120", "201", "210"]
 
 def solution(limit):
+    permutations.cache_clear()
     return permutations(data)[limit - 1]
 
 data = testData
@@ -41,7 +45,7 @@ data = probData
 
 print(solution(1000000))
 
-count = 1
+count = 3
 scale = 1
 
 import utils.timing

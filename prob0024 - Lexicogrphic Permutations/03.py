@@ -6,19 +6,16 @@ Created on Feb 6, 2024
 
 @author: johnmcalister
 
-Direct approach
+Use itertools to produce all permutations
 '''
+
+import itertools
 
 testData = "012"
 probData = "0123456789"
 
 def permutations(s):
-    if (len(s)) == 1:
-        return [s]
-    retval = []
-    for x in range(len(s)):
-        retval += [s[x] + y for y in permutations(s[:x] + s[x + 1:])]
-    return retval
+    return ["".join(x) for x in itertools.permutations(s)]
 
 assert permutations("0") == ["0"]
 assert permutations("1") == ["1"]
@@ -41,7 +38,7 @@ data = probData
 
 print(solution(1000000))
 
-count = 1
+count = 3
 scale = 1
 
 import utils.timing

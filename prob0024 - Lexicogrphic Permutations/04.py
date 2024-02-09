@@ -6,27 +6,17 @@ Created on Feb 6, 2024
 
 @author: johnmcalister
 
-Direct approach
+Don't generate all permutations - calculate the Nth permutation directly
 '''
 
 testData = "012"
 probData = "0123456789"
 
-def permutations(s):
-    if (len(s)) == 1:
-        return [s]
-    retval = []
-    for x in range(len(s)):
-        retval += [s[x] + y for y in permutations(s[:x] + s[x + 1:])]
-    return retval
-
-assert permutations("0") == ["0"]
-assert permutations("1") == ["1"]
-assert permutations("01") == ["01", "10"]
-assert permutations("012") == ["012", "021", "102", "120", "201", "210"]
+def factoradic(n):
+    return 0
 
 def solution(limit):
-    return permutations(data)[limit - 1]
+    return ""
 
 data = testData
 
@@ -41,7 +31,7 @@ data = probData
 
 print(solution(1000000))
 
-count = 1
+count = 3
 scale = 1
 
 import utils.timing
