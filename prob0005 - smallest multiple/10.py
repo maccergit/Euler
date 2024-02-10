@@ -22,9 +22,4 @@ scale = 1000000
 
 import utils.timing
 utils.timing.table_timing([10, 20], count, scale)
-utils.timing.plot_timing([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], count, scale, "prob0005.10")
-
-# Adjust count/scale to allow larger limits to run in reasonable time with appropriate units
-# count = 100
-# scale = 1000
-# utils.timing.plot_timing([1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000], count, scale, "math.lcm()")
+utils.timing.plot_timing([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], count, scale)

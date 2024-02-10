@@ -32,4 +32,4 @@ scale = 1000000
 
 import utils.timing
 # utils.timing.table_timing([x + 1 for x in range(len(current_data))], count, scale)
-utils.timing.plot_timing([x + 1 for x in range(len(current_data))], count, scale, "prob0067.01", ticks = False)
+utils.timing.plot_timing([x + 1 for x in range(len(current_data))], count, scale, ticks = False)

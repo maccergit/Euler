@@ -31,4 +31,4 @@ scale = 1000
 
 import utils.timing
 utils.timing.table_timing([10, 2000000], count, scale)
-utils.timing.plot_timing([500000, 1000000, 1500000, 2000000], count, scale, "prob0010.02")
+utils.timing.plot_timing([500000, 1000000, 1500000, 2000000], count, scale)

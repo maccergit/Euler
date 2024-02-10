@@ -69,4 +69,4 @@ scale = 1000000
 
 import utils.timing
 utils.timing.table_timing([1900, 1901, 1902, 1903, 1904, 1905, 2000], count, scale)
-utils.timing.plot_timing([x for x in range(1901, 2001)], count, scale, "prob0019.04", ticks=False)
+utils.timing.plot_timing([x for x in range(1901, 2001)], count, scale, ticks=False)
