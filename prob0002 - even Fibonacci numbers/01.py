@@ -9,8 +9,6 @@ Created on Feb 19, 2020
 Brute force - sum generated values that are even.
 '''
 
-# Brute force
-
 def fib_gen(limit):
     f0 = 0
     fnext = 1
