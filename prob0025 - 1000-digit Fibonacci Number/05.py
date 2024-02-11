@@ -6,7 +6,7 @@ Created on Feb 6, 2024
 
 @author: johnmcalister
 
-Direct approach - but use Binet's formula to compute current number, rather than recursive definition.
+Search for index, instead of iterate to index.
 
 Use Decimal type.  Consider experimenting with precision to speed up performance.
 '''
@@ -38,10 +38,18 @@ assert fib(12) == 144
 
 # return index of the largest Fibonacci number less than or equal to some limit
 def fibLimit(limit):
-    index = 0
+    index = 1
     while fib(index) <= limit:
-        index += 1
-    return index - 1
+        minIndex = index
+        index *= 2
+    maxIndex = index
+    while maxIndex - minIndex > 1:
+        index = (minIndex + maxIndex) // 2
+        if fib(index) > limit:
+            maxIndex = index
+        else:
+            minIndex = index
+    return minIndex
 
 assert fibLimit(10) == 6
 assert fibLimit(20) == 7
@@ -66,8 +74,8 @@ assert solution(40) == 189
 
 print(solution(1000))
 
-count = 10
-scale = 1000
+count = 100
+scale = 1000000
 
 import utils.timing
 utils.timing.table_timing([1000], count, scale)
