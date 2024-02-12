@@ -35,9 +35,6 @@ def repetendLen(x):
             dividend *= 10
         digits.append(dividend // x)
         dividend %= x
-    index = 0
-    while digits[index] == 0:
-        index += 1
     return len(remainders) - remainders.index(dividend)
 
 assert repetendLen(1) == 1

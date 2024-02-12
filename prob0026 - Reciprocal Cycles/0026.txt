@@ -15,9 +15,7 @@ A unit fraction contains 1 in the numerator. The decimal representation of the u
 Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that 1/7 has a 6-digit recurring cycle.
 Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
 -----
-Possible approaches:
-- Let machine compute decimal representation, and then look for repeated decimal in the result
--- standard float is only good to 53 places of precision - and that only for smaller numbers - will need to use something other than float
---- consider using arbitrary precision floats, and set precision to be very long (can we automatically determine a good precision from limit?)
---- consider using rationals (either implemented by hand or built in type)
--- Regardless of implementation, then extract digits by successively multiplying number by 10 and extracting the units portion.  Keep list of digits until we see a repetend.
+Long division is the answer - converting to decimal and then looking for repeat has issues:
+- Need high precision to handle base 2 quantization errors, so need to use arbitrary precision library like decimal or gmpy2
+- If precision is too low, we miss the long patterns of the smaller fractions - so precision needs to be increased to large values.
+- Resulting searches through long decimal sequences are too slow.
