@@ -23,16 +23,44 @@ Direct approach - note that the examples can be rewritten as :
 so every rational has an infinite repeat.  In case of duplicate lengths, we will use the first one we find.
 '''
 
-def solution(limit):
-    return 0
+# return the repetend of the reciprocal of a provided number
+def repetendLen(x):
+    dividend = 1
+    digits = []
+    remainders = []
+    while dividend not in remainders:
+        remainders.append(dividend)
+        while dividend > 0 and dividend < x:
+            digits.append(0)
+            dividend *= 10
+        digits.append(dividend // x)
+        dividend %= x
+    index = 0
+    while digits[index] == 0:
+        index += 1
+    return len(remainders) - remainders.index(dividend)
 
-assert solution(1) == 0
-assert solution(2) == 0
-assert solution(3) == 0
-assert solution(4) == 0
-assert solution(5) == 0
-assert solution(6) == 0
-assert solution(7) == 0
+assert repetendLen(1) == 1
+assert repetendLen(2) == 1
+assert repetendLen(3) == 1
+assert repetendLen(4) == 1
+assert repetendLen(5) == 1
+assert repetendLen(6) == 1
+assert repetendLen(7) == 6
+assert repetendLen(8) == 1
+assert repetendLen(9) == 1
+assert repetendLen(10) == 1
+
+def solution(limit):
+    repetendLens = [repetendLen(x) for x in range(1, limit)]
+    return repetendLens.index(max(repetendLens)) + 1
+
+assert solution(2) == 1
+assert solution(3) == 1
+assert solution(4) == 1
+assert solution(5) == 1
+assert solution(6) == 1
+assert solution(7) == 1
 assert solution(8) == 7
 assert solution(9) == 7
 assert solution(10) == 7
@@ -46,9 +74,9 @@ assert solution(50) -- 47
 
 print(solution(1000))
 
-# count = 1
-# scale = 1
+count = 3
+scale = 1000
 
-# import utils.timing
-# utils.timing.table_timing([1000], count, scale)
-# utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale)
+import utils.timing
+utils.timing.table_timing([1000], count, scale)
+utils.timing.plot_timing([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], count, scale)
