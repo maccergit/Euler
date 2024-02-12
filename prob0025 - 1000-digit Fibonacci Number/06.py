@@ -8,7 +8,7 @@ Created on Feb 6, 2024
 
 Search for index, instead of iterate to index.
 
-Use gmpy2.mpfr type.  Consider experimenting with precision to speed up performance.
+Use gmpy2.mpfr type.
 '''
 
 import gmpy2

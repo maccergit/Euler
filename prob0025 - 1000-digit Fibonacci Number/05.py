@@ -8,7 +8,7 @@ Created on Feb 6, 2024
 
 Search for index, instead of iterate to index.
 
-Use Decimal type.  Consider experimenting with precision to speed up performance.
+Use Decimal type.
 '''
 
 import decimal

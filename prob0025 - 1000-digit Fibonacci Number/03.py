@@ -8,10 +8,15 @@ Created on Feb 6, 2024
 
 Direct approach - but use Binet's formula to compute current number, rather than recursive definition.
 
-Use Decimal type.  Consider experimenting with precision to speed up performance.
+Use Decimal type.  NOTE: Decreasing precision had little impact on performance (and sometimes made it worse), and decreasing too far (below 4 digits) caused assertions to fail.
+Increasing precision caused performance to decrease - 100 was a bit slower, 1000 was 10x worse.
+have much impact on performance.
 '''
 
 import decimal
+
+# default is 28
+# decimal.getcontext().prec = 10
 
 # compute constants only once
 root5 = decimal.Decimal(5 ** 0.5)

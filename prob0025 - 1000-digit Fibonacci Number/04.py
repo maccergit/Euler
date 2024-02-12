@@ -10,7 +10,8 @@ Direct approach - but use Binet's formula to compute current number, rather than
 
 Use gmpy2.mpfr type.  Note that PyDev will indicate a false error unless gmpy2 is added to "forced builtins" setting (see PyDev docs on "forced builtins").
 Code will run, but redline is ugly until fixed.
-Consider changing precision to improve performance.
+
+As with Decimal, reducing precision does not have much impact, and can even reduce performance or cause asserts to fail.  Increasing precision hurts performance.
 '''
 
 import gmpy2
