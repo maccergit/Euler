@@ -12,7 +12,6 @@ It can be verified that the sum of the numbers on the diagonals is 101.
 
 What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
 --------
-Brute force - build the matrix, and then compute sum of diagonals.  Use list of lists, and then NumPy.
 Use pattern :
   N0 = 1
   N1 = N0 + 2, N2 = N1 + 2, N3 = N2 + 2, N4 = N3 + 2
