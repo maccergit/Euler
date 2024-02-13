@@ -18,7 +18,7 @@ def numPrimes(a, b):
     while len(factors) == 1:
         n += 1
         p = n * n + a * n + b
-        factors = [x for x in factor.gen_factors(p)]
+        factors = [*factor.gen_factors(p)]
     return n
 
 # assert numPrimes(1, 41) == 40

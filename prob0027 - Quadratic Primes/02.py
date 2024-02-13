@@ -7,6 +7,8 @@ Created on Feb 12, 2024
 @author: johnmcalister
 
 Direct approach - iterate through a and b, finding number of primes each generates.  Primality test is factoring to see if any factors > 1 exist.
+
+Use fastfactor library as drop-in replacement for factor library.
 '''
 
 import utils.fastfactor as factor
@@ -18,7 +20,7 @@ def numPrimes(a, b):
     while len(factors) == 1:
         n += 1
         p = n * n + a * n + b
-        factors = [x for x in factor.gen_factors(p)]
+        factors = [*factor.gen_factors(p)]
     return n
 
 # assert numPrimes(1, 41) == 40
