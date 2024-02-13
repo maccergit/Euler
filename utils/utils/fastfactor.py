@@ -18,7 +18,7 @@ def gen_factors(limit):
             yield x[0]
 
 def testGenFactors(limit, expected):
-    assert [x for x in gen_factors(limit)] == expected
+    assert [*gen_factors(limit)] == expected
 
 testGenFactors(2, [2])
 testGenFactors(3, [3])
@@ -31,6 +31,7 @@ testGenFactors(9, [3, 3])
 testGenFactors(10, [2, 5])
 testGenFactors(11, [11])
 testGenFactors(12, [2, 2, 3])
+testGenFactors(-2, [])
 
 # Return dictionary of prime factors in {prime : power} format
 def factPow(limit):
@@ -47,14 +48,16 @@ assert factPow(9) == {3 : 2}
 assert factPow(10) == {2 : 1, 5 : 1}
 assert factPow(11) == {11 : 1}
 assert factPow(12) == {2 : 2, 3 : 1}
+assert factPow(-2) == {}
 
 # Generate all divisors of provided number - not well ordered
+# Negative numbers always yield "1" - use code outside the generator on positive values, and adjust as needed for your application if you need divisors of negative numbers.
 def gen_divisors(limit):
     s = list(gen_factors(limit))
     return (y for y in {math.prod(x) for x in itertools.chain.from_iterable(itertools.combinations(s, r) for r in range(len(s) + 1))})
 
 def testGenDivisors(limit, expected):
-    assert {x for x in gen_divisors(limit)} == expected
+    assert {*gen_divisors(limit)} == expected
 
 testGenDivisors(1, {1})
 testGenDivisors(2, {1, 2})
@@ -68,9 +71,10 @@ testGenDivisors(9, {1, 3, 9})
 testGenDivisors(10, {1, 2, 5, 10})
 testGenDivisors(11, {1, 11})
 testGenDivisors(12, {1, 2, 3, 4, 6, 12})
+testGenDivisors(-2, {1})
 
 def sumDivisors(limit):
     return math.prod((factor ** (power + 1) - 1) // (factor - 1) for factor, power in factPow(limit).items())
 
-for limit in range(2, 13):
-    assert sumDivisors(limit) == sum(x for x in gen_divisors(limit))
+for limit in range(-4, 13):
+    assert sumDivisors(limit) == sum(gen_divisors(limit))
