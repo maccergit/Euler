@@ -90,7 +90,7 @@ testGenDivisors(12, {1, 2, 3, 4, 6, 12})
 testGenDivisors(-2, {1})
 
 def sumDivisors(limit):
-    return prod((factor ** (power + 1) - 1) // (factor - 1) for factor, power in factPow(limit).items() if factor > 1)
+    return prod((factor ** (power + 1) - 1) // (factor - 1) for factor, power in factPow(limit).items())
 
 for limit in range(-4, 13):
     assert sumDivisors(limit) == sum(gen_divisors(limit))

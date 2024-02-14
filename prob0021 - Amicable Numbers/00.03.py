@@ -6,7 +6,7 @@ Created on Feb 1, 2024
 
 @author: johnmcalister
 
-run timing tests on fastfactor.gen_divisors
+run timing tests on factoring version of gen_divisors()
 '''
 
 import math

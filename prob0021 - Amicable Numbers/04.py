@@ -6,19 +6,20 @@ Created on Feb 1, 2024
 
 @author: johnmcalister
 
-Direct approach with utils.fastfactor version of divisors.  Similar to utils.factor version, but uses fast libraries to generate factors.
+Use utils.fastfactor version of calulating sum of divisors - uses the product of (prime^(power + 1) - 1)/(prime - 1) for each prime factor to get sum - don't find every divisor.
+fastfactor uses pyprime sieve to get prime factors.
 
-NOTE: utils.fastfactor.gen_divisors() generates all divisors, not just proper divisors - so we need to remove the number being factored from the list of divisors.
+NOTE: Again, utils.fastfactor.sumDivisors() generates all divisors, not just proper divisors - so we need to remove the number being factored from the sum.
 '''
 
 import utils.fastfactor as factor
 
-assert {x for x in factor.gen_divisors(220)} - {220} == {1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110}
-assert {x for x in factor.gen_divisors(284)} - {284} == {1, 2, 4, 71, 142}
+assert factor.sumDivisors(220) - 220 == 284
+assert factor.sumDivisors(284) - 284 == 220
 
 def isAmicable(x):
-    divSum = sum(factor.gen_divisors(x)) - x
-    return x == sum(factor.gen_divisors(divSum)) - divSum and x != divSum
+    divSum = factor.sumDivisors(x) - x
+    return x == factor.sumDivisors(divSum) - divSum and x != divSum
 
 assert isAmicable(220)
 assert isAmicable(284)
@@ -28,7 +29,7 @@ def solution(limit):
 
 print(solution(10000))
 
-count = 5
+count = 10
 scale = 1000
 
 import utils.timing
