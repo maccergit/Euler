@@ -8,7 +8,7 @@ TODO - Use DocStrings
 '''
 import pyprimesieve
 import math
-import itertools
+import utils.factor
 
 # Generate all prime factors of provided number
 def gen_factors(limit):
@@ -50,11 +50,9 @@ assert factPow(11) == {11 : 1}
 assert factPow(12) == {2 : 2, 3 : 1}
 assert factPow(-2) == {}
 
-# Generate all divisors of provided number - not well ordered
-# Negative numbers always yield "1" - use code outside the generator on positive values, and adjust as needed for your application if you need divisors of negative numbers.
+# It turns out the optimized trial division routine in utils.factpr is faster than finding all combinations of prime factors.
 def gen_divisors(limit):
-    s = list(gen_factors(limit))
-    return (y for y in {math.prod(x) for x in itertools.chain.from_iterable(itertools.combinations(s, r) for r in range(len(s) + 1))})
+    return utils.factor.gen_divisors(limit)
 
 def testGenDivisors(limit, expected):
     assert {*gen_divisors(limit)} == expected
