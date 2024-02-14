@@ -9,16 +9,21 @@ Created on Feb 13, 2024
 Direct approach
 '''
 
+def powers(limit):
+    return {a ** b for a in range(2, limit + 1) for b in range(2, limit + 1)}
+
+assert powers(5) == {4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125}
+
 def solution(limit):
-    return 0
+    return len(powers(limit))
 
 assert solution(5) == 15
 
 print(solution(100))
 
-count = 1
-scale = 1
+count = 100
+scale = 1000
 
-# import utils.timing
-# utils.timing.table_timing([5, 100], count, scale)
-# utils.timing.plot_timing([101, 201, 301, 401, 501, 601, 701, 801, 901, 1001], count, scale)
+import utils.timing
+utils.timing.table_timing([5, 100], count, scale)
+utils.timing.plot_timing([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], count, scale)
