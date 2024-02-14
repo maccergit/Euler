@@ -12,7 +12,7 @@ Direct approach - roll your own file parsing
 with open('0022_names.txt') as infile:
     rawData = infile.read().strip()
 
-names = sorted([x[1:-1] for x in rawData.split(',')])
+names = sorted(x[1:-1] for x in rawData.split(','))
 
 def alphaValueChar(c):
     return ord(c) - ord('A') + 1
