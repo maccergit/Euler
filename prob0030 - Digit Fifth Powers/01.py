@@ -22,6 +22,7 @@ Once we have determined a range, there are a couple approaches :
 - iterate over integers, break apart into digits, compute power sum, and then compare with original number.
 - iterate over possible digits, compute power sum, and see if result matches number built from those digits (each set of digits can produce several numbers as digits are rearranged).
 - Construct equation based on digits : d0 + 10 * d1 + 100 * d2 + ... = d0^p + d1^p + d2^p + ..., 0 <= d0, d1, d2, ... <= 9 : since these are constrained to be integers, these are diophantine.
+  However, it's not a form that the diophantine solver can recognize.
 '''
 
 def getUpperLimit(limit):
