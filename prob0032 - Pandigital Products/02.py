@@ -16,9 +16,9 @@ def pandigital(limit):
     perms = itertools.permutations([*range(1, limit + 1)])
     for perm in perms:
         permString = "".join(str(x) for x in perm)
-        for div1 in range(1, len(permString) - 1):
+        for div1 in range(1, (len(permString) - 1) // 2 + 1):
             first = int(permString[:div1])
-            for div2 in range(div1 + 1, len(permString)):
+            for div2 in range(div1 + 1, div1 + (len(permString) - div1) // 2 + 1):
                 second = int(permString[div1:div2])
                 third = int(permString[div2:])
                 if (first * second == third):
