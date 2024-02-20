@@ -10,7 +10,6 @@ Direct approach - but use Binet's formula to compute current number, rather than
 
 Use Decimal type.  NOTE: Decreasing precision had little impact on performance (and sometimes made it worse), and decreasing too far (below 4 digits) caused assertions to fail.
 Increasing precision caused performance to decrease - 100 was a bit slower, 1000 was 10x worse.
-have much impact on performance.
 '''
 
 import decimal
