@@ -19,12 +19,13 @@ def solution(limit):
     i = int((math.log(limit) + math.log(5) / 2.0) / math.log(phi) / 3)
     return int(sum((phi ** x - upsilon ** x) for x in range(3, 3 * i + 3, 3)) / root5)
 
-assert solution(100) == 44
-print(solution(4000000))
-
-count = 100000
-scale = 1000000
-
-import utils.timing
-utils.timing.table_timing([100, 4000000], count, scale)
-utils.timing.plot_timing([10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000], count, scale)
+if __name__ == "__main__":
+    assert solution(100) == 44
+    print(solution(4000000))
+    
+    count = 100000
+    scale = 1000000
+    
+    import utils.timing
+    utils.timing.table_timing([100, 4000000], count, scale)
+    utils.timing.plot_timing([10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000], count, scale)
