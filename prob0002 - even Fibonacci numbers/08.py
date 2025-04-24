@@ -13,7 +13,7 @@ However, mpf is still fixed precision.
 import mpmath
 
 # Use same precision as Decimal default
-mpmath.mp.dps = 200
+mpmath.mp.dps = 28
 
 def solution(limit):
     root5 = mpmath.mp.sqrt(5)
