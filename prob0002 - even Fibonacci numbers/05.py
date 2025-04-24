@@ -32,3 +32,7 @@ if __name__ == "__main__":
     import utils.timing
     utils.timing.table_timing([100, 4000000], count, scale)
     utils.timing.plot_timing([10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000], count, scale)
+    
+    assert solution(10**17) == 49597426547377748
+    assert solution(10**30) == 727244555616386341839153320976
+    print("done")
