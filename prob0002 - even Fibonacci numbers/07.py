@@ -16,7 +16,7 @@ def solution(limit):
     root5 = Decimal(5).sqrt()
     phi = (1 + root5) / 2
     upsilon = (1 - root5) / 2
-    exp = 3 * int((Decimal(limit).log10() + Decimal(5).log10() / 2) / phi.log10() /3) + 2
+    exp = 3 * int((Decimal(limit).log10() + Decimal(5).log10() / 2) / phi.log10() / 3) + 2
     
     with localcontext() as ctx:
         ctx.prec = 100
