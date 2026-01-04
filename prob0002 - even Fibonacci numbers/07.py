@@ -13,13 +13,16 @@ However, decimal is still fixed precision (default = 28 digits, but is configura
 from decimal import Decimal, localcontext
 
 def solution(limit):
-    root5 = Decimal(5).sqrt()
-    phi = (1 + root5) / 2
-    upsilon = (1 - root5) / 2
-    exp = 3 * int((Decimal(limit).log10() + Decimal(5).log10() / 2) / phi.log10() / 3) + 2
+    with localcontext() as workctx:
+        workctx.prec = 28
+        root5 = Decimal(5).sqrt()
+        phi = (1 + root5) / 2
+        upsilon = (1 - root5) / 2
+        exp = 3 * int((Decimal(limit).log10() + Decimal(5).log10() / 2) / phi.log10() / 3) + 2
     
-    with localcontext() as ctx:
-        ctx.prec = 100
+    # Decouple rounding precision from working precision (not normally done - but allows us to see interesting effects)
+    with localcontext() as roundingctx:
+        roundingctx.prec = 100
         return ((phi ** exp - upsilon ** exp - root5) / (2 * root5)).quantize(Decimal(1))
 
 if __name__ == "__main__":
@@ -38,4 +41,7 @@ if __name__ == "__main__":
     assert solution(10**30) == 727244555616386341839153320976
     # If you comment out the previous line, then this fails because we exceed the local precision used by "quantize()", and quantize() checks for loss of precision.
     print(solution(10**100))
+    # If all the work is done with precision of "100" in both contexts, then both assertions pass, as we have enough precision for the calculations - but the exception
+    # is still thrown for the last example, as it requires more than 100 digits of precision.
+    # If all the work is done with precision of "200", then the program runs to completion.
     print("done")

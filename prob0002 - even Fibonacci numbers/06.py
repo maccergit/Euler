@@ -6,7 +6,7 @@ Created on Feb 16, 2025
 
 @author: johnmcalister
 
-Use closed form of sum of even fibonacci numbers.  Note - use of floats and large exponents causes this to fail around 14 quadrillian+.
+Use closed form of sum of even fibonacci numbers.  Note - use of floats and large exponents causes this to fail around 14 quadrillion+.
 '''
 
 import math
@@ -29,6 +29,6 @@ if __name__ == "__main__":
     utils.timing.table_timing([100, 4000000], count, scale)
     utils.timing.plot_timing([10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000], count, scale)
     
-    # This assetion fails because we exceed the precision of float, and it silently computes the wrong answer
+    # This assertion fails because we exceed the precision of float, and it silently computes the wrong answer
     assert solution(10**17) == 49597426547377748
     print("done")
