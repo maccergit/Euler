@@ -13,7 +13,7 @@ Gauss's summation: ∑(multiples of 3) + ∑(multiples of 5) - ∑(multiples of 
 # Compute sum[n..end), but only for multiples of "n".  Do this by finding sum[1..end // n), and then multiply by "n" to get n, 2n, 3n, ...
 def sumRange(n, end):
     new_end = (end - 1) // n # Adjust because range is open on right - this is all values < end, not ≤ end
-    return new_end * (new_end + 1) * n / 2
+    return new_end * (new_end + 1) * n // 2
 
 def solution(limit):
     return sumRange(3, limit) + sumRange(5, limit) - sumRange(15, limit)
