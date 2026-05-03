@@ -34,16 +34,25 @@ def table_timing(parms, count, scale):
     for data in ([parm, str(timing(parm, count, scale)) + " " + units] for parm in parms):
         print(data)
 
-# Like "table_timing()" above, but displays results in a pyplot graph, with labeled axes.  Time units are inferred from "scale" and included on time axis.
+# Like "table_timing()" above, but saves the results as a pyplot graph with labeled axes.  Time units are inferred from "scale" and included on the time axis.
 # Default behavior is to use every x value as a tick mark - but more than about 10-20 elements will not be clear - passing "False" for "ticks" parameter will allow PyPlot
 # to automatically generate ticks for the x-axis.
-def plot_timing(parms, count, scale, ticks = True):
+# The plot is saved to <save_dir>/<problem-slug>-<script>.png (default: ../.wiki/images/ relative to the script's CWD) and the figure is closed immediately - no blocking GUI window.
+def plot_timing(parms, count, scale, ticks = True, save_dir = "../.wiki/images"):
     plt.plot(parms, [timing(parm, count, scale) for parm in parms])
     if (ticks):
         plt.xticks(parms)
-    plt.title(os.path.basename(os.getcwd()) + " - " + os.path.splitext(os.path.basename(_getframe(1).f_locals["__file__"]))[0])
+    script_path = _getframe(1).f_locals["__file__"]
+    script_name = os.path.splitext(os.path.basename(script_path))[0]
+    problem_dir = os.path.basename(os.getcwd())
+    problem_slug = problem_dir.split(" ", 1)[0]
+    plt.title(problem_dir + " - " + script_name)
     plt.xlabel("limit")
     ylabel = "time (" + getScaleUnits(scale) + ")"
     plt.ylabel(ylabel)
     plt.grid()
-    plt.show()
+    os.makedirs(save_dir, exist_ok = True)
+    out_path = os.path.join(save_dir, problem_slug + "-" + script_name + ".png")
+    plt.savefig(out_path, bbox_inches = "tight", dpi = 100)
+    plt.close()
+    print("saved plot to:", out_path)
