@@ -15,6 +15,7 @@ def solution(limit):
     return max(x[0] for x in factorize(limit))
 
 assert solution(13195) == 29
+assert solution(36) == 3
 print(solution(600851475143))
 
 count = 100000

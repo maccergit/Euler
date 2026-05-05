@@ -14,7 +14,7 @@ from sympy import sieve
 def gen_factors(limit):
     current = 1
     current_prime = sieve[current]
-    while current_prime * current_prime < limit:
+    while current_prime * current_prime <= limit:
         if limit % current_prime == 0:
             yield current_prime
             limit = limit // current_prime
@@ -27,6 +27,7 @@ def solution(limit):
     return max(x for x in gen_factors(limit))
 
 assert solution(13195) == 29
+assert solution(36) == 3
 print(solution(600851475143))
 
 count = 10000

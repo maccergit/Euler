@@ -15,6 +15,7 @@ def solution(limit):
     return max(x for x in utils.factor.gen_factors(limit))
 
 assert solution(13195) == 29
+assert solution(36) == 3
 print(solution(600851475143))
 
 count = 10
