@@ -5,14 +5,30 @@
 Created on Feb 19, 2020
 
 @author: johnmcalister
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 '''
 
-# pyprimesieve - factorize
+# primesieve - stream primes lazily via Iterator, stopping as soon as the
+# remaining residue is fully factored.  Much faster than bulk-generating all
+# primes up to sqrt(limit) up front - especially on composites where small
+# factors peel off quickly.
 
-from pyprimesieve import factorize
+import primesieve
 
 def solution(limit):
-    return max(x[0] for x in factorize(limit))
+    factors = []
+    it = primesieve.Iterator()
+    p = it.next_prime()
+    while p * p <= limit:
+        while limit % p == 0:
+            factors.append(p)
+            limit //= p
+        if limit == 1:
+            break
+        p = it.next_prime()
+    if limit > 1:
+        factors.append(limit)
+    return max(factors)
 
 assert solution(13195) == 29
 assert solution(36) == 3
