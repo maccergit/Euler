@@ -10,12 +10,10 @@ Brute force
 '''
 
 def is_palindrome(x):
-    xs = str(x)
-    xsr = xs[::-1]
-    return xs == xsr
+    return str(x) == str(x)[::-1]
 
 def solution(digits):
-    values = range(int('1' + '0' * (digits - 1)), int('9' * digits) + 1)
+    values = range(10 ** (digits - 1), int('9' * digits) + 1)
     return max(z for z in (x * y for x in values for y in values if y >= x and (x % 11 == 0 or y % 11 == 0)) if is_palindrome(z))
 
 assert solution(2) == 9009
